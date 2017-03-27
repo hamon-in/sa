@@ -1,0 +1,44 @@
+channel: yproj
+csv_header: /export/data/yproj/csv_header.txt
+csv_header_string: '''Date'', ''Time'',''Logger'',''Asset'',''IP'', ''Channel'' ,''Battery
+  Volt'',''CPU Temp'',''MANUAL SPEED'',''THROTTLE'',''SUCTION'',''DISCHARGE'',''FLOW
+  METER'',''DRIVE END'',''NON DRIVE END'',''Engine State'',''Engine RPM'',''RunHours'',''NumSuccStarts'',''NumUnscStarts'',''CoolantTemp'',''EngOilPress'',''Load'',''Fuel'',''SCM
+  Imp1'''
+devices:
+- asset: my_asset
+  channel: yproj-pump-1
+  class: Modbus
+  cycle: 10
+  device_config: /home/abu/iot/input_samples/INPUT_CONFIG.TXT.TXT
+  ipaddr: 10.0.0.1
+  logger: datalogger
+  publish: true
+  registers: [BIN, BOUT, BOutRA15, IL-NT-BIO8, Engine name, Nominal RPM, Gear teeth,
+    FltResGoToMAN, ControllerMode, DispBaklightTO, RPM Source, GearTeethBI3, Panel
+      Button, RPMbyWterminal, RunHoursSource, Ubat, D+, Not used, Not used, Not used,
+    Not used, Not used, Not used, Not used, Disch Press, Run hrs, NextServTime, Num
+      starts, E-Stop, ShutDown, DayCons, TripCons, Total 1, RPM, ECU State, SpeedReq
+      Rel, RPM-BI3, Engine Speed, Fuel Rate, CoolantTemp, Intake Temp, Oil Press,
+    Boost Press, Load, Soot Load, Ash Load, FuelUsed, ECU FreqSelect]
+  registers_to_log: [BIN, BOUT, BOutRA15, IL-NT-BIO8, Engine name, Nominal RPM, Gear
+      teeth, FltResGoToMAN, ControllerMode, DispBaklightTO, RPM Source, GearTeethBI3,
+    Panel Button, RPMbyWterminal, RunHoursSource, Ubat, D+, Not used, Not used, Not
+      used, Not used, Not used, Not used, Not used, Disch Press, Run hrs, NextServTime,
+    Num starts, E-Stop, ShutDown, DayCons, TripCons, Total 1, RPM, ECU State, SpeedReq
+      Rel, RPM-BI3, Engine Speed, Fuel Rate, CoolantTemp, Intake Temp, Oil Press,
+    Boost Press, Load, Soot Load, Ash Load, FuelUsed, ECU FreqSelect]
+  unit: '1'
+logging:
+  formatters:
+    brief: {format: '%(message)s'}
+    csv: {datefmt: '%Y-%m-%d, %H:%M:%S', format: '%(asctime)s, %(name)s, %(message)s'}
+  handlers:
+    console: {class: logging.StreamHandler, formatter: brief, level: INFO, stream: 'ext://sys.stdout'}
+    file1: {class: logging.handlers.TimedRotatingFileHandler, filename: /export/data/yproj/yproj.log,
+      formatter: csv, interval: 1, level: INFO, when: D}
+  loggers:
+    datalogger-1:
+      handlers: [console, file1]
+      level: INFO
+  version: 1
+publish: {publish_key: pubkey, subscribe_key: subkey}
