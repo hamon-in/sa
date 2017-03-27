@@ -9,14 +9,21 @@ These are instructions on how to setup a platform where you can use application.
 Install ` virtualenv `  using 
 `
 sudo apt-get install virtualenv 
+
 `
 Run `git clone .` This will get a copy of the latest source code into the `yamltolosant` directory. We'll call this the "working directory". Go to this directory using ` cd yamltolosant `
-Create a virtualenv using `
+Create a virtualenv using 
+`
 mkvirtualenv -p $(which python3) ~/iot_env
+
 ` 
-Activate the virtualenv using `
+Activate the virtualenv using 
+`
+
 . ~/iot_env/bin/activate
-` (don't forget the initial *.*).
+
+`
+(don't forget the initial *.*).
 Your prompt should have `(iot_env)` prefixed to it. 
 Now you should be inside the `yamltolosant` directory and should have activated the `iot_env` environment. 
 Install requirements inside virtualenv  using `pip install -r requirements.txt`
