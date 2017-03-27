@@ -3,9 +3,16 @@ import yaml
 import json
 
 def yamltolosant(filename):
+    """ change these five field based on you losant account """ 
+    email = "YOUR LOSANT EMAIL ID"
+    password ="YOUR LOSANT PASSWORD"
+    applicationId = 'YOUR APPLICATIOIN ID '
+    key ='APPLICATION KEY'
+    secret ='APPLICATION SECRET KEY'
+
     op_data = {}
     client = Client()
-    app_responce=client.auth.authenticate_user(credentials={'email':'abukmca@gmail.com','password':'MY1losant'})
+    app_responce=client.auth.authenticate_user(credentials={'email':email,'password':password})
     app_token = app_responce['token']
     app_client=Client(auth_token=app_token, url="https://api.losant.com")
     
@@ -25,13 +32,13 @@ def yamltolosant(filename):
         data = yaml.load(f)
         for d in data['devices']:
             mydevice["name"] = d["asset"]+"name"
-            new_device = app_client.devices.post(applicationId='58d4af606ef59c000177475a',device=mydevice)
+            new_device = app_client.devices.post(applicationId=applicationId,device=mydevice)
             device_id = new_device['deviceId']
             op_data[mydevice["name"]]=device_id
             creds = {
                 'deviceId': device_id,
-                'key': 'aa668b98-b15e-419f-b567-a9fc5c0323c9',
-                'secret': '68eed06c85d53626f71664f14abefd7a1fe4d9ed484583185f8092b5a81777bb'
+                'key': key,
+                'secret': secret
             }
             response = client.auth.authenticate_device(credentials=creds)
             client.auth_token = response['token']
