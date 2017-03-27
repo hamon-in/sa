@@ -7,7 +7,8 @@ Installation
 ------------
 
 For use this application just pull this repo  and install the requirment for that run this command after activating a vitualenvironment  can be installed using
-   ``` pip install -r requirements.txt 
+   ``` 
+      pip install -r requirements.txt 
    ```
    Losant Account
 =========================
