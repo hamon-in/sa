@@ -6,11 +6,9 @@ The Yamltolosant is an applicatioin for  creating devices in losant platform , a
 Installation
 ------------
 
-For use this application just pull it and install the requirment for that from the terminal run this command after activating a vitualenvironment  can be installed using
-
-::
-   pip install -r requirements.txt
-
+For use this application just pull this repo  and install the requirment for that run this command after activating a vitualenvironment  can be installed using
+   ``` pip install -r requirements.txt 
+   ```
    Losant Account
 =========================
 There also need a losant account you can create it from https://www.losant.com
@@ -24,9 +22,10 @@ just replace the email ,  password, applicationId , key , secret values at the f
 Example
 -------
 from the python shell 
-::
 
->>> import yamltolosant
->>> yamltolosant.yamltolosant("logger.yaml")
-
+```
+  >>> import yamltolosant
+  >>> yamltolosant.yamltolosant("logger.yaml")
+```
 here i used logger.yaml file as input file which you get it by pulling this repository 
+after successful compleation there create a new_device_info.json file with newly created device informations
