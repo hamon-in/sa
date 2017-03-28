@@ -1,23 +1,21 @@
 YAML TO LOSANT
 =========================
 
-The Yamltolosant is an applicatioin for  creating devices in losant platform , and send data to the created devices,The following are documents on what need to be done to work on the product.
+The Yamltolosant is an applicatioin for  creating devices in losant platform , and send data to the created devices,The following are documents on what need to be done to work on this product.
 
 Installation
 ------------
 These are instructions on how to setup a platform where you can use application. These instructions are specifically for Ubuntu Linux. If you're on another OS, you can install Ubuntu inside a VM. 
 Install ` virtualenv `  using 
-`
-sudo apt-get install virtualenv 
 
+` sudo apt-get install virtualenv `
+Run `git clone`  , This will get a copy of the latest source code into the ` yamltolosant ` directory. We'll call this the "working directory". Go to this directory using ` cd yamltolosant `.
+Then Create a virtualenv using 
 `
-Run `git clone .` This will get a copy of the latest source code into the `yamltolosant` directory. We'll call this the "working directory". Go to this directory using ` cd yamltolosant `
-Create a virtualenv using 
-`
-mkvirtualenv -p $(which python3) ~/iot_env
+mkvirtualenv -p $(which python3) ~/iot_env 
 
 ` 
-Activate the virtualenv using 
+. and activate the virtualenv using 
 `
 
 . ~/iot_env/bin/activate
@@ -25,7 +23,7 @@ Activate the virtualenv using
 `
 (don't forget the initial *.*).
 Your prompt should have `(iot_env)` prefixed to it. 
-Now you should be inside the `yamltolosant` directory and should have activated the `iot_env` environment. 
+Now you should be inside the ` yamltolosant ` directory , and should have activated the `iot_env` environment. 
 Install requirements inside virtualenv  using `pip install -r requirements.txt`
 
    Losant Account
